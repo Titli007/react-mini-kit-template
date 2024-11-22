@@ -30,7 +30,11 @@ export const VerifyBlock = () => {
       return null;
     }
 
+    console.log("verifypayload", verifyPayload)
+
     const { finalPayload } = await MiniKit.commandsAsync.verify(verifyPayload);
+
+    console.log('final payload', finalPayload)
 
     // no need to verify if command errored
     if (finalPayload.status === "error") {
@@ -40,10 +44,10 @@ export const VerifyBlock = () => {
       setHandleVerifyResponse(finalPayload);
       return finalPayload;
     }
-
+    console.log(process.env.VITE_NEXTAUTH_URL)
     // Verify the proof in the backend
     const verifyResponse = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/verify`,
+      `${process.env.VITE_NEXTAUTH_URL}/api/verify`,
       {
         method: "POST",
         headers: {
@@ -56,6 +60,8 @@ export const VerifyBlock = () => {
         }),
       }
     );
+
+    console.log("verifyresponse",verifyResponse)
 
     // TODO: Handle Success!
     const verifyResponseJson = await verifyResponse.json();

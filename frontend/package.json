@@ -12,11 +12,15 @@
   "dependencies": {
     "@types/node": "20",
     "@worldcoin/minikit-js": "1.1.1",
+    "@worldcoin/minikit-react": "^1.2.0",
+    "axios": "^1.7.7",
     "dotenv": "^16.4.5",
-    "eruda": "^3.3.0",
+    "lucide-react": "^0.456.0",
     "next-auth": "^4.24.8",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.3.0",
+    "react-router-dom": "^6.28.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
@@ -24,6 +28,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
+    "eruda": "^3.3.0",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.9",

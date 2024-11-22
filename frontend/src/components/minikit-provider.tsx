@@ -6,7 +6,7 @@ import { MiniKit } from "@worldcoin/minikit-js";
 export default function MiniKitProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     MiniKit.install();
-    console.log(MiniKit.isInstalled());
+    console.log("minikit is installed? " , MiniKit.isInstalled());
   }, []);
 
   return <>{children}</>;
