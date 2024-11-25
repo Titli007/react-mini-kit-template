@@ -1,7 +1,15 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-// MongoDB Atlas connection string
-const mongoURI = 'mongodb+srv://Ananya:12345@cluster0.jb8dc.mongodb.net/QA_world_app?retryWrites=true&w=majority&appName=Cluster0';
+// Load environment variables from .env file
+dotenv.config();
+
+// MongoDB Atlas connection string from .env
+const mongoURI = process.env.MONGODB_URI;
+
+if (!mongoURI) {
+  throw new Error("MONGODB_URI is not defined in the .env file");
+}
 
 mongoose.connect(mongoURI)
   .then(() => console.log("Connected to MongoDB Atlas"))

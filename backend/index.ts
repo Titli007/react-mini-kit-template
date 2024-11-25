@@ -1,6 +1,10 @@
 import express from "express";
 import './src/db/config' // Import config to initiate MongoDB connection
 import router from './src/routes/questionRoutes'
+import dotenv from "dotenv";
+
+// Load environment variables from .env file
+dotenv.config();
 
 
 import { verifyHandler } from "./src/verify";
@@ -29,7 +33,7 @@ app.post("/verify", verifyHandler);
 app.post("/initiate-payment", initiatePaymentHandler);
 app.post("/confirm-payment", confirmPaymentHandler);
 
-const port = 3000;
+const port = process.env.PORT || 4000
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
