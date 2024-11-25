@@ -78,7 +78,7 @@ const SingleQA = () => {
             onChange={(e) => setNewAnswer(e.target.value)}
           ></textarea>
           <button
-            className={`mt-2 px-4 py-2 rounded-md text-white ${isSubmitting ? 'bg-gray-400' : 'bg-blue-500 hover:bg-blue-600'}`}
+            className={`mt-2 px-4 py-2 bg-purple-600 text-white rounded-md ${isSubmitting ? 'bg-gray-400' : 'bg-purple-500 hover:bg-purple-600'}`}
             disabled={isSubmitting}
             onClick={handleSubmit}
           >

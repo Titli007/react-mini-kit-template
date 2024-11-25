@@ -4,6 +4,7 @@ import { deleteQuestion } from '../api/DeleteQuestion';
 import { getQuestionById } from '../api/GetQuestionById';
 import { getQuestions } from '../api/GetQuestion';
 import { updateQuestion } from '../api/UpdateQuestion';
+import { useNavigate } from 'react-router-dom';
 
 interface Question {
   _id: string; // Use _id to match the backend
@@ -18,6 +19,7 @@ export default function QAPage() {
   const [newQuestion, setNewQuestion] = useState('');
   const [newAnswer, setNewAnswer] = useState('');
   const [answeringQuestionId, setAnsweringQuestionId] = useState<string | null>(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     // Fetch questions on component mount
@@ -41,18 +43,12 @@ export default function QAPage() {
     }
   };
 
-  // const handleAddAnswer = async (questionId: string) => {
-  //   if (newAnswer.trim()) {
-  //     try {
-  //       const updatedQuestion = await updateQuestion(questionId, { answers: [...questions.find(q => q.id === questionId)?.answers, newAnswer] });
-  //       setQuestions(questions.map(q => q.id === questionId ? updatedQuestion : q));
-  //       setNewAnswer('');
-  //       setAnsweringQuestionId(null);
-  //     } catch (error) {
-  //       console.error("Error updating question with answer:", error);
-  //     }
-  //   }
-  // };
+  const handleAddAnswer = async (questionId: string) => {
+    console.log(newAnswer, questionId)
+    navigate(`/question/${questionId}`)
+  };
+  
+  
 
   // const handleDeleteQuestion = async (questionId: string) => {
   //   try {
@@ -144,17 +140,11 @@ export default function QAPage() {
       ) : (
         <div className="space-x-2">
           <button
-            onClick={() => setAnsweringQuestionId(question._id)}
+            onClick={() => handleAddAnswer(question._id)}
             className="px-3 py-1 bg-purple-600 text-white rounded-md"
           >
             Answer
           </button>
-          {/* <button
-            onClick={() => handleDeleteQuestion(question._id)}
-            className="px-3 py-1 bg-red-500 text-white rounded-md"
-          >
-            Delete
-          </button> */}
           <button
             onClick={() => handleShareQuestionById(question._id)}
             className="px-3 py-1 bg-blue-500 text-white rounded-md"
